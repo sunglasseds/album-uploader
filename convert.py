@@ -154,3 +154,6 @@ for index, audio_file in enumerate(files_to_convert):
     )
     print(ffmpegcmd)
     subprocess.run(ffmpegcmd, shell=True)
+
+with open("songs.txt", "w") as f:
+    f.write("\n".join([str(_file) for _file in files_to_convert]))

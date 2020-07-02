@@ -28,8 +28,7 @@ def initialize_upload(youtube, options):
     body = {
         "snippet": {
             "title": options.title,
-            "description": options.description,
-            "categoryId": options.category
+            "categoryId": "10"
         },
         "status": {
             "privacyStatus": "private"
@@ -78,10 +77,9 @@ def upload(insert_request):
             print("sleeping {} seconds and then retrying".format(sleep_seconds))
             time.sleep(sleep_seconds)
 
-argparser.add_argument("--file", required=True, help="video file to upload")
-argparser.add_argument("--title", help="video title")
-argparser.add_argument("--description", help="video description")
-argparser.add_argument("--category", default="10", help="video category\nsee: https://gist.github.com/dp/1b24bf2961521bd75d6c")
+argparser.add_argument("-f", "--file", required=True, help="video file to upload")
+argparser.add_argument("-t", "--title", help="video title")
+argparser.add_argument("-d", "--description", help="video description")
 args = argparser.parse_args()
 
 if not os.path.exists(args.file)
